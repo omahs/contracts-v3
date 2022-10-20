@@ -180,3 +180,6 @@ docs: ## generate docs from natspec comments
 
 slither:	## run slither static analysis
 	slither src/diamonds/nayms --exclude solc-version,assembly-usage,naming-convention --ignore-compile
+
+echidna:	## run echidna fuzzer
+	echidna-test test/invariants/FuzzyDiamond.sol --config echidna.config.yml
