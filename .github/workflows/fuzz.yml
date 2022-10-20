@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  echidna:
+  fuzz:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -16,22 +16,6 @@ jobs:
     timeout-minutes: 15
     container:
       image: ghcr.io/nayms/contracts-builder:latest
-    # strategy:
-    #   fail-fast: false
-    #   matrix:
-    #     testName:
-    #       - TickBitmapEchidnaTest
-    #       - TickMathEchidnaTest
-    #       - SqrtPriceMathEchidnaTest
-    #       - SwapMathEchidnaTest
-    #       - TickEchidnaTest
-    #       - TickOverflowSafetyEchidnaTest
-    #       - OracleEchidnaTest
-    #       - BitMathEchidnaTest
-    #       - LowGasSafeMathEchidnaTest
-    #       - UnsafeMathEchidnaTest
-    #       - FullMathEchidnaTest
-
     steps:
       - uses: actions/checkout@v3
         with:
@@ -52,8 +36,8 @@ jobs:
       - name: Prepare build
         run: make prep-build
 
-      # - name: Build solidity contracts
-      #   run: make build
+      - name: Build solidity contracts
+        run: make build
 
       - name: Run Echidna
         uses: crytic/echidna-action@v2
