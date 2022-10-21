@@ -26,15 +26,17 @@ testLimit: 500000
 # #shrinkLimit determines how much effort is spent shrinking failing sequences
 # shrinkLimit: 5000
 # #contractAddr is the address of the contract itself
-# contractAddr: "0x00a329c0648769a73afac7f9381e08fb43dbea72"
+contractAddr: "0x00a329c0648769a73afac7f9381e08fb43dbea72"
 # #deployer is address of the contract deployer (who often is privileged owner, etc.)
 # deployer: "0x00a329c0648769a73afac7f9381e08fb43dbea70"
+deployer: "0x00000000000000000000000000000000DeaDBeef"
 # #sender is set of addresses transactions may originate from
 # sender: ["0x10000", "0x20000", "0x00a329c0648769a73afac7f9381e08fb43dbea70"]
+sender: ["0x00000000000000000000000000000000DeaDBeef"]
 # #balanceAddr is default balance for addresses
-# balanceAddr: 0xffffffff
+balanceAddr: 0xffffffff
 # #balanceContract overrides balanceAddr for the contract address
-# balanceContract: 0
+balanceContract: 10000000000
 # #solcArgs allows special args to solc
 # solcArgs: ""
 # #solcLibs is solc libraries

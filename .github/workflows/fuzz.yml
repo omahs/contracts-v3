@@ -7,6 +7,7 @@ on:
 
 jobs:
   fuzz:
+    name: Fuzz with Echidna
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -16,6 +17,13 @@ jobs:
     timeout-minutes: 15
     container:
       image: ghcr.io/nayms/contracts-builder:latest
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     testName:
+    #       - Fuzzer
+    #       - FuzzerTwo
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -47,4 +55,18 @@ jobs:
 
       - name: Run Echidna
         run: |
-          echidna-test test/invariants/Fuzzer.sol --contract Fuzzer --format text
+          make fuzz
+
+      # - name: Run Echidna
+      #   uses: crytic/echidna-action@v2
+      #   with:
+      #     files: test/invariants/${{ matrix.testName }}.sol
+      #     contract: ${{ matrix.testName }}
+      #     config: echidna.config.yml
+      #     corpus-dir: corpus
+      #     test-mode: assertion
+      #     test-limit: 250000
+      #     seq-len: 100
+      #     solc-args: --optimize --optimize-runs 200
+      #     echidna-version: v2.0.3
+      #     solc-version: 0.8.13
