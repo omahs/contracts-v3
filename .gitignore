@@ -20,6 +20,9 @@ artifacts
 forge-artifacts
 out
 
+# Echidna
+crytic-export
+
 # Project specific
 .staging
 deployedAddressesTest.json
