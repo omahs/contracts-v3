@@ -75,6 +75,10 @@ struct AppStorage {
     uint256 upgradeExpiration; // the period of time that an upgrade is valid until.
     uint256 sysAdmins; // counter for the number of sys admin accounts currently assigned
     mapping(address => bytes32) objectTokenWrapperId; // reverse mapping token wrapper address to ID
+    uint256 currentGlobalPolicyFeeStrategy; // the ID of the current global policy fee strategy
+    uint256 currentGlobalMarketplaceFeeStrategy; // the ID of the current global policy fee strategy
+    mapping(uint256 => CommissionReceiverInfo[]) policyFeeStrategy; // Global policy fee strategies => array of CommissionReceiverInfo struct
+    mapping(uint256 => CommissionReceiverInfo[]) marketplaceFeeStrategy; // Global markketplace fee strategies => array of CommissionReceiverInfo struct
 }
 
 struct FunctionLockedStorage {
